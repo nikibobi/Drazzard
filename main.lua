@@ -563,7 +563,7 @@ function love.keypressed(key)
 	end
 
 	if key == '1' then
-		table.insert(entities, Entity.create("Enemy!", math.random(0, 500), math.random(0, 500)))
+		spawnEnemy(1, love.mouse.getX() - translateX, love.mouse.getY() - translateY)
 	end
 
 	if key == '2' then
