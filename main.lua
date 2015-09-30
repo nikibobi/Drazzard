@@ -532,10 +532,13 @@ function love.mousepressed(x, y, button)
 		end
 	end
 
-	if button == 'r' and player.mana >= 50 and not isPaused then
-   		player.x = love.mouse.getX() - translateX
-   		player.y = love.mouse.getY() - translateY
-   		player.mana = player.mana - (distance(player.xScreen+player.w/2, player.yScreen+player.h/2, love.mouse.getX(), love.mouse.getY())/10)
+	if button == 'r' and not isPaused then
+		local cost = distance(player.xScreen+player.w/2, player.yScreen+player.h/2, love.mouse.getX(), love.mouse.getY())/10
+   		if cost <= player.mana then
+	   		player.x = love.mouse.getX() - translateX
+	   		player.y = love.mouse.getY() - translateY
+	   		player.mana = player.mana - cost
+	   	end
     end
 end
 
