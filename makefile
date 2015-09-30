@@ -1,7 +1,6 @@
-
 all:
 	cd ..
-	zip -9 -q -r Game.love .
+	zip -9 -q -r Drazzard.love .
 	make run
 run:
-	open -n -a love Game.love 
+	love Drazzard.love 
