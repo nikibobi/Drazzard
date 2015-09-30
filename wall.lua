@@ -21,8 +21,9 @@ function Wall:draw(dt)
    love.graphics.setColor(255, 255, 255, 255)
 
 	if debug then
-		love.graphics.print(self.x, self.x + self.w + 5, self.y+15)
-		love.graphics.print(self.y, self.x + self.w + 5, self.y+30)
+      love.graphics.print(self.name, self.x, self.y-15)
+		love.graphics.print(self.x / tilesize, self.x, self.y-5)
+		love.graphics.print(self.y / tilesize, self.x, self.y+5)
       love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 	end
 end

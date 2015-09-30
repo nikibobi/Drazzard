@@ -367,6 +367,10 @@ function love.draw(dt)
 			end
 			love.graphics.rectangle("fill", v.x*maps + mapx, v.y*maps + mapy, v.w*maps, v.h*maps)
 		end
+        for k,v in ipairs(walls) do
+            love.graphics.setColor(127, 32, 32)
+            love.graphics.rectangle("fill", v.x*maps + mapx, v.y*maps + mapy, v.w*maps, v.h*maps)
+        end
 		for k,v in ipairs(entities) do
 			if v == player then
                 love.graphics.setColor(0, 255, 0)
@@ -570,7 +574,11 @@ function love.keypressed(key)
 		debug = not debug
 	end
 
-
+    if key == '3' then
+        local x = love.mouse.getX() - translateX
+        local y = love.mouse.getY() - translateY
+        generateWall(math.floor(x / tilesize), math.floor(y / tilesize))
+    end
 end
 
 function love.keyreleased(key)
@@ -680,7 +688,7 @@ function generateMap()
 
 	-- main room
 	generateDonutRoom(0, 0, 6)
-	--table.insert(walls, Wall.create("", -4, -13))
+    generateWall(-4, -13)
 end
 
 
@@ -710,6 +718,11 @@ end
 	end
 
 end]]
+
+function generateWall(x, y)
+    local wall = Wall.create("BOOM!", x, y)
+    table.insert(walls, wall)
+end
 
 function generateBridge(x, y, w, h)
 	local x = x
