@@ -49,9 +49,9 @@ function Button:update(dt)
 end
 
 function Button:destroy()
-   for i = #Buttons, 1, -1 do
-       if Buttons[i] == self then
-           table.remove(Buttons, i)
+   for i = #buttons, 1, -1 do
+       if buttons[i] == self then
+           table.remove(buttons, i)
        end
    end
 end

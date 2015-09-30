@@ -47,9 +47,9 @@ function Item:update(dt)
 end
 
 function Item:destroy()
-    for i = #Items, 1, -1 do
-        if Items[i] == self then
-            table.remove(Items, i)
+    for i = #items, 1, -1 do
+        if items[i] == self then
+            table.remove(items, i)
         end
     end
 end
