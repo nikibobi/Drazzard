@@ -357,17 +357,25 @@ function love.draw(dt)
 		love.graphics.print(math.floor(player.mana).."/"..math.floor(player.total_mana), 10, 20)
 
 		-- minimap
-		love.graphics.setColor(255, 255, 255, 50)
+		local mapx, mapy = 50, 200
+        local maps = 0.1
 		for k,v in ipairs(tiles) do
-			--love.graphics.rectangle("line", v.x/10 + 50, v.y/10 + 200, v.w/10, v.h/10)
-			love.graphics.rectangle("fill", v.x/10 + 50, v.y/10 + 200, v.w/10, v.h/10)
+			if v.name == "stone" then
+				love.graphics.setColor(50, 50, 50)
+			elseif v.name == "bridge" then
+				love.graphics.setColor(165, 42, 42)
+			end
+			love.graphics.rectangle("fill", v.x*maps + mapx, v.y*maps + mapy, v.w*maps, v.h*maps)
+		end
+		for k,v in ipairs(entities) do
+			if v == player then
+                love.graphics.setColor(0, 255, 0)
+			else
+                love.graphics.setColor(255, 0, 0)
+            end
+            love.graphics.rectangle("fill", v.x*maps + mapx, v.y*maps + mapy, v.w*maps, v.h*maps)
 		end
 		love.graphics.setColor(255, 255, 255)
-
-		love.graphics.setColor(0, 255, 0)
-			love.graphics.circle("fill", player.x/10 + 50, player.y/10 + 200, player.w/10)
-		love.graphics.setColor(255, 255, 255)
-		
 
 		love.graphics.print("Score: "..score, 10, 40)
 		love.graphics.print("Gold: "..player.gold, 10, 55)
