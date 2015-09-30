@@ -353,6 +353,8 @@ function love.draw(dt)
 		love.graphics.setColor(0, 200, 200)
 		love.graphics.rectangle("fill", 10, 25, player.mana * (100/player.total_mana), 10)
 		love.graphics.setColor(255, 255, 255)
+		love.graphics.print(math.floor(player.health).."/"..math.floor(player.total_health), 10, 5)
+		love.graphics.print(math.floor(player.mana).."/"..math.floor(player.total_mana), 10, 20)
 
 		-- minimap
 		love.graphics.setColor(255, 255, 255, 50)
