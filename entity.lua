@@ -52,10 +52,10 @@ function Entity:draw(dt)
 
 
 	if distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2) < 255 then
-		love.graphics.setColor(255, 255, 255, 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2))
+		love.graphics.setColor(255, 255, 255, self:alpha())
 
 		if self ~= player then
-			love.graphics.setColor(255, 0, 0, 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2))
+			love.graphics.setColor(255, 0, 0, self:alpha())
 			--love.graphics.circle("line", self.x+self.w/2, self.y+self.h/2, self.range)
 			love.graphics.setColor(255, 255, 255, 255)
 		end
@@ -70,9 +70,9 @@ function Entity:draw(dt)
 		love.graphics.setColor(255, 255, 255, 255)
 
 		if self ~= player then
-			love.graphics.setColor(255, 0, 0, 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2))
+			love.graphics.setColor(255, 0, 0, self:alpha())
 			love.graphics.rectangle("fill", self.x, self.y - 15, self.health * (self.w/self.total_health), 5)
-			love.graphics.setColor(0, 200, 200, 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2))
+			love.graphics.setColor(0, 200, 200, self:alpha())
 			love.graphics.rectangle("fill", self.x, self.y - 10, self.mana * (self.w/self.total_mana), 5)
 			love.graphics.setColor(255, 255, 255, 255)
 		end
@@ -161,6 +161,10 @@ function Entity:update(dt)
 
 	self.xScreen = self.x + translateX
 	self.yScreen = self.y + translateY
+end
+
+function Entity:alpha()
+	return 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2)
 end
 
 

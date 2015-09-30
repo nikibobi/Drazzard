@@ -19,7 +19,7 @@ end
 
 function Tile:draw(dt)
 
-   love.graphics.setColor(255, 255, 255, 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2))
+   love.graphics.setColor(255, 255, 255, self:alpha())
    if distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2) < 255 then
       if self.name == "stone" then
          if self.role == "C" then
@@ -82,10 +82,14 @@ function Tile:draw(dt)
    love.graphics.setColor(255, 255, 255, 255)
 
    if debug then
-      love.graphics.print(self.x/tilesize, self.x, self.y-5)
-		love.graphics.print(self.y/tilesize, self.x, self.y+5)
+      love.graphics.print(self.xC, self.x, self.y-5)
+		love.graphics.print(self.yC, self.x, self.y+5)
       love.graphics.rectangle("line", self.x, self.y, self.w, self.h)
 	end
+end
+
+function Tile:alpha()
+   return 255-distance(player.x+player.w/2, player.y+player.h/2, self.x+self.w/2, self.y+self.h/2)
 end
 
 function Tile:update(dt)
