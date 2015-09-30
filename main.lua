@@ -381,7 +381,6 @@ function love.draw(dt)
 		love.graphics.print("Gold: "..player.gold, 10, 55)
 		
 		if debug then
-			love.graphics.print("Entities: "..#entities, 800, 30)
 			love.graphics.print("Actual:"..math.floor(love.mouse.getX()-translateX)..","..math.floor(love.mouse.getY()-translateY), love.mouse.getX() + 15, love.mouse.getY()-15)
 			love.graphics.print("Screen:"..love.mouse.getX()..","..love.mouse.getY(), love.mouse.getX() + 15, love.mouse.getY())
 
@@ -391,6 +390,8 @@ function love.draw(dt)
 			love.graphics.print("#rooms: "..#rooms, 700, 45)
 			love.graphics.printf(notice, 0, 10, love.graphics.getWidth(), 'center')
 			love.graphics.print("enemies_killed: "..enemies_killed, 700, 60)
+            love.graphics.print("#walls: "..#walls, 700, 75)
+            love.graphics.print("#entities: "..#entities, 700, 90)
 		end
 	elseif gamestate == "shop" then
 
